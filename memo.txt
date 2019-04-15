@@ -1,3 +1,17 @@
 BME280 :
 
+GPIO08 : RST Multiplexer I2C
+GPIO31 : marron : IN1 
+GPIO32 : rouge : IN2 
+GPIO33 : orange : IN3 
+GPIO35 : jaune : IN4 
+GPIO36 : vert : IN5 
+GPIO37 : bleu : IN6 
+GPIO38 : violet : IN7 
+GPIO40 : gris : IN8 
+
+
+
+
+
 
