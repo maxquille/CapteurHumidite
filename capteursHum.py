@@ -120,7 +120,7 @@ def read_value(log_script):
 	
 	# Retreive value from 8 sensors
 	for i in range (0,8):
-		if i == 0:
+		if i <= 4:
 			try:
 				SW.chn(i)
 				x = subprocess.Popen(["read_bme280"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -184,13 +184,12 @@ def restart_multiplerI2C(log_script):
 	GPIO.output(8,True)
 	log_script.warning("Restart multiplexer I2C")
 	
-
 def main_loop(log_script,log_recordValue):
 	while True:
 		read_value(log_script)
 		record_value(log_recordValue)
 		
-		time.sleep(5) # Tempo entre boucle
+		time.sleep(30) # Tempo entre boucle
 			
 def auto_test(log_script):
 	GPIO.output(40,True) # VMC petite vitesse
@@ -247,17 +246,15 @@ def main():
 	""" Auto test VMC """
 	auto_test(log_script)
 	
-	""" 
-	Init GPIO VALUE
-	"""
-	GPIO.output(31,True)
+	""" Init GPIO value """
+	GPIO.output(31,True)	# False Cmd Registre en ouverture		True Cmd Registre en fermeture
 	GPIO.output(32,True)
 	GPIO.output(33,True)
 	GPIO.output(35,True)
-	GPIO.output(36,True)	# False Registre en ouverture			True Registre en fermeture
+	GPIO.output(36,True)	
 	GPIO.output(37,True)	# False Alim registre sous tension		True Alim registre hors tension	
 	GPIO.output(40,True) 	# False VMC grande vitesse				True VMC petite vitesse
-	GPIO.output(38,False) 	# False VMC eteinte						True VMC allumee
+	GPIO.output(38,True) 	# False VMC eteinte						True VMC allumee
 	
 	main_loop(log_script,log_recordValue)
 
