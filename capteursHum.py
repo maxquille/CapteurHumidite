@@ -120,7 +120,7 @@ def read_value(log_script):
 	
 	# Retreive value from 8 sensors
 	for i in range (0,8):
-		if i <= 4:
+		if i <= 5:
 			try:
 				SW.chn(i)
 				x = subprocess.Popen(["read_bme280"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -189,7 +189,7 @@ def main_loop(log_script,log_recordValue):
 		read_value(log_script)
 		record_value(log_recordValue)
 		
-		time.sleep(30) # Tempo entre boucle
+		time.sleep(300) # Tempo entre boucle
 			
 def auto_test(log_script):
 	GPIO.output(40,True) # VMC petite vitesse
